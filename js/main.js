@@ -38,7 +38,7 @@ const bombCount = (square) => {
     leftCells = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
     rightCells = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-     if (leftCells.includes(parseInt(square.id))) {
+    if (leftCells.includes(parseInt(square.id))) {
         bombsNext = [-10, -9, 10, 11, 1];
         bombsNext.forEach(element => {
             sum = element + parseInt(square.id)
@@ -64,7 +64,7 @@ const bombCount = (square) => {
                 bombs++
             }
         });
-        return bombs        
+        return bombs
     }
 }
 
