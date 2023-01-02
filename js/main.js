@@ -35,7 +35,6 @@ const levelSelect = () => {
 
 const bombCount = (square) => {
     let bombs = 0
-    let lastCells = levelSelect();
     leftCells = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
     rightCells = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
