@@ -38,7 +38,6 @@ const bombCount = (square) => {
     leftCells = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
     rightCells = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-    //first will search bombs on the left wall, then will search on the
      if (leftCells.includes(parseInt(square.id))) {
         bombsNext = [-10, -9, 10, 11, 1];
         bombsNext.forEach(element => {
