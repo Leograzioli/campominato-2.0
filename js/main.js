@@ -1,6 +1,7 @@
 const gameField = document.getElementById("game-field");
 const gameStart = document.getElementById("start-game");
-const bombsNumber = 16;
+const message = document.getElementById('victory');
+const bombsNumber = 1;
 
 let points = document.getElementById('points')
 let bombsArray = [];
@@ -32,6 +33,47 @@ const levelSelect = () => {
     return selectedLevel.value;
 }
 
+const bombCount = (square) => {
+    let bombs = 0
+    let lastCells = levelSelect();
+    leftCells = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
+    rightCells = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+    //cell top left
+     if (leftCells.includes(parseInt(square.id))) {
+        bombsNext = [-10, -9, 10, 11, 1];
+        bombsNext.forEach(element => {
+            sum = element + parseInt(square.id)
+            if (bombsArray.includes(sum)) {
+                bombs++
+            }
+        });
+        return bombs
+    } else if (rightCells.includes(parseInt(square.id))) {
+        bombsNext = [-10, -11, 10, 9, -1];
+        bombsNext.forEach(element => {
+            sum = element + parseInt(square.id)
+            if (bombsArray.includes(sum)) {
+                bombs++
+            }
+        });
+        return bombs
+    } else {
+        bombsNext = [-10, -11, -9, 10, 9, 11, 1, -1];
+        bombsNext.forEach(element => {
+            sum = element + parseInt(square.id)
+            if (bombsArray.includes(sum)) {
+                bombs++
+            }
+        });
+        return bombs        
+    }
+
+    //all other cases
+    
+    
+}
+
 const squareClick = (square) => {
     let clickedSquare = parseInt(square.id)
 
@@ -41,10 +83,8 @@ const squareClick = (square) => {
 
         !clickedCells.includes(clickedSquare) && clickedCells.push(clickedSquare);
 
+        square.innerHTML = bombCount(square)
         points.innerHTML = clickedCells.length;
-        if(clickedCells.length === parseInt(levelSelect()) - bombsNumber) {
-            gameStart.innerHTML = "&#128526"
-        };
     } else {
         canPLay = false
         square.innerHTML = "bomb";
@@ -53,8 +93,14 @@ const squareClick = (square) => {
             let bombSquare = document.getElementById(bombsArray[i])
             bombSquare.classList.add('red')
             bombSquare.innerHTML = "&#10036;"
+            message.innerHTML = `you made ${clickedCells.length} points`
         });
     }
+    if (clickedCells.length === parseInt(levelSelect()) - bombsNumber) {
+        message.innerHTML = 'Victory!'
+        gameStart.innerHTML = "&#128526"
+
+    };
 }
 
 const bombsGenerator = () => {
@@ -66,7 +112,7 @@ const bombsGenerator = () => {
 }
 
 gameStart.addEventListener('click', () => {
-
+    message.innerHTML = 'Let me see what you got!'
     gameStart.innerHTML = "&#128512"
     gameField.innerHTML = "";
     points.innerHTML = "0"
