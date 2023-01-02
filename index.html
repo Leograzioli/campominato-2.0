@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <main>
+            <div class="wrapper">
+
+                <h1>Campo Minato!</h1>
+                <div class="container">
+                    <div class="ct-top">
+
+                        <div id="start-game" >
+                            &#128512
+                        </div>
+
+                        <div class="d-flex justify-end align-center p-2">
+                            <div class="box-points">
+                                <div id="points">
+                                    0
+                                </div>
+                            </div>
+                            <div >
+                                <label for="game-level" class="d-block fw-bold">Selec Level</label>
+                                <select id="game-level">
+                                    <option value="100">Easy</option>
+                                    <option value="80">Medium</option>
+                                    <option value="60">Hard</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="ct-bottom">
+                        <div class="row" id="game-field">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
