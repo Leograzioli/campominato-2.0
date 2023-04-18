@@ -79,17 +79,20 @@ const squareClick = (square) => {
 
         square.innerHTML = bombCount(square)
         points.innerHTML = clickedCells.length;
+
     } else {
+
         canPLay = false
         square.innerHTML = "bomb";
         gameStart.innerHTML = "&#128531"
-        bombsArray.forEach((element, i) => {
-            let bombSquare = document.getElementById(bombsArray[i])
+        bombsArray.forEach((element) => {
+            let bombSquare = document.getElementById(element)
             bombSquare.classList.add('red')
             bombSquare.innerHTML = "&#10036;"
             message.innerHTML = `you made ${clickedCells.length} points`
         });
     }
+
     if (clickedCells.length === parseInt(levelSelect()) - bombsNumber) {
         message.innerHTML = 'Victory!'
         gameStart.innerHTML = "&#128526"
